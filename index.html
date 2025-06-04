@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk Assessment Steps</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background-color: #F2F2F2; /* Light background from brand colours */
+    margin: 20px;
+  }
+  .steps-container {
+    width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Allows containers to wrap to the next line */
+    gap: 20px; /* Space between containers */
+  }
+  .step-card {
+    background-color: #F2F2F2; /* Light grey container */
+    border: 2px solid #532A8C; /* Dark purple border */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    flex: 1 1 calc(33.333% - 40px); /* Approx 3 items per row, accounting for gap */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    min-width: 350px; /* Minimum width for readability before wrapping */
+    position: relative; /* For positioning the next button */
+  }
+  .step-card.active {
+    display: block; /* Show the active step */
+  }
+  .step-title {
+    color: #532A8C; /* Dark purple for titles */
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .step-description {
+    color: #333;
+    line-height: 1.6;
+  }
+  .next-button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  .next-button {
+    background-color: #7ABF49; /* Green from brand colours */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+  .next-button:hover {
+    background-color: #96BF78; /* Lighter green on hover */
+  }
+  .next-button:disabled {
+    background-color: #C3ACE8; /* Disabled colour */
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<div class="steps-container">
+  <div class="step-card active" id="step1">
+    <div class="step-title">Step 1: Find the Hazards</div>
+    <div class="step-description">Start by looking around your dental practice. Check all the treatment rooms, the lab, the waiting area, and any other spaces.</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(2)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step2">
+    <div class="step-title">Step 2: Think About the Harm</div>
+    <div class="step-description">Consider what kind of injury or illness someone could get from each hazard. Could they slip and fall? Could they get an infection?</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(3)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step3">
+    <div class="step-title">Step 3: Think About How It Could Happen</div>
+    <div class="step-description">Imagine the different ways someone could get hurt. For example, how could someone trip over a cord?</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(4)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step4">
+    <div class="step-title">Step 4: Think About How Likely It Is</div>
+    <div class="step-description">Decide how often you think the harm could happen. Is it something that happens a lot, or is it rare?</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(5)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step5">
+    <div class="step-title">Step 5: Decide How to Fix It</div>
+    <div class="step-description">Think about what you can do to stop the harm. Can you move the cord? Can you clean up the spill?</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(6)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step6">
+    <div class="step-title">Step 6: Write It Down</div>
+    <div class="step-description">Keep a record of your risk assessment. Write down what you found and what you plan to do about it.</div>
+    <div class="next-button-container">
+      <button class="next-button" onclick="showNextStep(7)">Next</button>
+    </div>
+  </div>
+
+  <div class="step-card" id="step7">
+    <div class="step-title">Step 7: Check Again Later</div>
+    <div class="step-description">Review your risk assessment regularly. Things can change in the dental practice, so you need to keep checking for new hazards.</div>
+    </div>
+</div>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 7; // Updated to 7 as you included "Check Again Later" as a distinct step
+
+  function showNextStep(stepNumber) {
+    if (stepNumber <= totalSteps) {
+      // Hide the current step (if it exists)
+      const currentStepElement = document.getElementById(`step${currentStep}`);
+      if (currentStepElement) {
+        currentStepElement.classList.remove('active');
+      }
+
+      // Show the next step
+      const nextStepElement = document.getElementById(`step${stepNumber}`);
+      if (nextStepElement) {
+        nextStepElement.classList.add('active');
+      }
+      currentStep = stepNumber;
+    }
+  }
+</script>
+
+</body>
+</html>
