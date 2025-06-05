@@ -11,9 +11,8 @@
     margin: 20px;
   }
   .steps-container {
-    width: 1170px;
+    width: 630px; /* Adjusted width */
     margin: 0 auto;
-    /* Removed flex properties here as we want them stacked vertically */
   }
   .step-card {
     background-color: #F2F2F2; /* Light grey container */
@@ -119,22 +118,19 @@
 </div>
 
 <script>
-  let currentVisibleStep = 1; // Tracks the highest step number that has been revealed
+  let currentVisibleStep = 1;
   const totalSteps = 7;
 
   function showNextStep(stepNumberToShow) {
     if (stepNumberToShow > currentVisibleStep && stepNumberToShow <= totalSteps) {
-      // Mark the *current* step's button as disabled (optional, but good UX)
       const currentButton = document.getElementById(`nextButton${currentVisibleStep}`);
       if (currentButton) {
         currentButton.disabled = true;
       }
 
-      // Show the new step
       const nextStepElement = document.getElementById(`step${stepNumberToShow}`);
       if (nextStepElement) {
         nextStepElement.classList.add('active');
-        // Scroll to the newly revealed step for better UX, especially on smaller screens
         nextStepElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
